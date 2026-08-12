@@ -2,10 +2,10 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
-const helmet = require("helmet");
 const errorHandler = require("./middleware/errorMiddleware");
 
 const app = express();
@@ -13,8 +13,6 @@ const app = express();
 connectDB();
 
 app.use(helmet());
-
-app.use(errorHandler);
 
 app.use(cors());
 
@@ -29,8 +27,11 @@ app.get("/", (req, res) => {
     });
 });
 
+// Error handler should be LAST
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
