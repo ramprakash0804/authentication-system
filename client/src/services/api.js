@@ -1,24 +1,34 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:5000/api";
 
 const apiRequest = async (endpoint, options = {}) => {
-    const response = await fetch(`${API_URL}${endpoint}`, {
-        ...options,
 
-        headers: {
-            "Content-Type": "application/json",
-            ...(options.headers || {})
+    const response = await fetch(
+        `${API_URL}${endpoint}`,
+        {
+            ...options,
+
+            headers: {
+                "Content-Type": "application/json",
+                ...(options.headers || {})
+            }
         }
-    });
+    );
 
     const data = await response.json();
 
-   if (!response.ok) {
-    const error = new Error(data.message || "Something went wrong");
+    if (!response.ok) {
 
-    error.errors = data.errors || [];
+        const error = new Error(
+            data.message || "Something went wrong"
+        );
 
-    throw error;
-}
+        error.errors = data.errors || [];
+
+        throw error;
+    }
+
     return data;
 };
 
