@@ -14,8 +14,14 @@ connectDB();
 
 app.use(helmet());
 
-app.use(cors());
-
+app.use(
+    cors({
+        origin: "https://authentication-system-ram.netlify.app",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: true
+    })
+);
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
