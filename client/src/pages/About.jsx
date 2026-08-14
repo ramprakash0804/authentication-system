@@ -163,7 +163,7 @@ function About() {
                         </h3>
 
                         <p>
-                            I'm Ram Prakash, a Computer Science
+                            I'm Ramprakash, a Computer Science
                             Engineering student interested in
                             software development and technology.
                         </p>
@@ -179,7 +179,7 @@ function About() {
                         <div className="developer-links">
 
                             <a
-                                href="https://github.com/"
+                                href="https://github.com/ramprakash0804"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -187,7 +187,7 @@ function About() {
                             </a>
 
                             <a
-                                href="https://www.linkedin.com/"
+                                href="https://linkedin.com/in/mailaram-ramprakash-601612307"
                                 target="_blank"
                                 rel="noreferrer"
                             >
